@@ -3,7 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Query\Builder;
 
+/**
+ * @method static Builder where($column, $operator = null, $value = null, $boolean = 'and')
+ */
 class Author extends Model
 {
     /**
@@ -12,6 +16,23 @@ class Author extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'description', 'site'
+        'name', 'description', 'url'
     ];
+
+    /**
+     * The model's default values for attributes.
+     *
+     * @var array
+     */
+    protected $attributes = [
+        'description' => 'some description here',
+    ];
+
+    /**
+     * Get the posts for the author.
+     */
+    public function posts()
+    {
+        return $this->hasMany('App\Post');
+    }
 }

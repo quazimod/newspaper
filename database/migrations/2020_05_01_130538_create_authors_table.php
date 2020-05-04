@@ -18,7 +18,7 @@ class CreateAuthorsTable extends Migration
             $table->timestamps(0);
             $table->string('name', 128)->unique();
             $table->string('description', 256);
-            $table->text('site');
+            $table->text('url');
         });
     }
 

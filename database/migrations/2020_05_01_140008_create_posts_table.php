@@ -18,7 +18,8 @@ class CreatePostsTable extends Migration
             $table->timestamps(0);
             $table->string('title', 256);
             $table->text('content');
-            $table->text('url');
+            $table->text('image_url')->nullable();
+            $table->text('source_url');
             $table->foreignId('author_id')->constrained();
         });
     }

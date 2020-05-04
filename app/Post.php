@@ -12,6 +12,14 @@ class Post extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'content', 'url', 'author_id'
+        'title', 'content', 'image_url', 'source_url', 'author_id'
     ];
+
+    /**
+     * Get the author of the post.
+     */
+    public function author()
+    {
+        return $this->belongsTo('App\Author');
+    }
 }
