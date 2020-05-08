@@ -6,6 +6,7 @@ use App\Post;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 
 
@@ -95,8 +96,12 @@ Route::middleware(['auth:api'])->group(function () {
             }
     });
 
-    Route::middleware('admin')->post('posts/add', function (Request $request) {
+    Route::post('posts/add', function (Request $request) {
         try {
+            if (!Auth::user()->can('create', Post::class)) {
+                throw new Exception('Authorization failed.');
+            }
+
             $post = new Post;
             $post->title = $request->input('title');
             $post->content = $request->input('content');
@@ -115,14 +120,19 @@ Route::middleware(['auth:api'])->group(function () {
         }
     });
 
-    Route::middleware('admin')->post('posts/update', function (Request $request) {
+    Route::post('posts/update', function (Request $request) {
         try {
             $post = Post::findOrFail($request->post_id);
+
+            if (!Auth::user()->can('update', $post)) {
+                throw new Exception('Authorization failed.');
+            }
+
             $post->title = $request->input('title');
             $post->content = $request->input('content');
             $post->image_url = $request->input('image_url');
             $post->source_url = $request->input('source_url');
-            $post->author_id = $request->input('author_id') ;
+            $post->author_id = $request->input('author_id');
 
             if ($post->isClean())
                 return response(['message' => 'Nothing to update.']);
@@ -132,6 +142,7 @@ Route::middleware(['auth:api'])->group(function () {
             return response([
                 'message' => 'Post#' . $post->id . ' success updated.',
                 'post' => $post], 200);
+
         } catch (Exception $e) {
             return response(
                 ['error' => 'Failed to update post: ' . $e->getMessage()], 418
@@ -139,10 +150,13 @@ Route::middleware(['auth:api'])->group(function () {
         }
     });
 
-    Route::middleware('admin')->post('posts/delete', function (Request $request) {
+    Route::post('posts/delete', function (Request $request) {
         try {
             $post = Post::findOrFail($request->post_id);
-            $post->delete();
+
+            if (Auth::user()->can('delete', $post)) {
+                $post->delete();
+            }
 
             return response(['message' => 'Post#' . $post->id . ' was deleted!'], 200);
         } catch (Exception $e) {
