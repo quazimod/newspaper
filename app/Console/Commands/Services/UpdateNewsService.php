@@ -55,7 +55,6 @@ class UpdateNewsService {
                     $author->name = $author_name;
                     $author->url = $author_site_url;
                     $author->save();
-                    $author->refresh();
                 }
 
                 $author->posts()->where('title', $post_title)->existsOr(
