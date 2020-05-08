@@ -12,6 +12,22 @@ class Like extends Model
      * @var array
      */
     protected $fillable = [
-        'text', 'user_id', 'post_id'
+        'user_id', 'post_id'
     ];
+
+    /**
+     * Get the post of the like.
+     */
+    public function post()
+    {
+        return $this->belongsTo('App\Post');
+    }
+
+    /**
+     * Get the user of the like.
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

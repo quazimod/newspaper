@@ -19,7 +19,7 @@ class CreateCommentsTable extends Migration
             $table->text('text');
             $table->foreignId('user_id')->constrained();
             $table->foreignId('post_id')->constrained();
-            $table->foreignId('reciever_id')->constrained('users');
+            $table->bigInteger('user_comment_id')->nullable();
         });
     }
 
