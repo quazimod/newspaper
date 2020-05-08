@@ -154,9 +154,11 @@ Route::middleware(['auth:api'])->group(function () {
         try {
             $post = Post::findOrFail($request->post_id);
 
-            if (Auth::user()->can('delete', $post)) {
-                $post->delete();
+            if (!Auth::user()->can('delete', $post)) {
+                throw new Exception('Authorization failed.');
             }
+
+            $post->delete();
 
             return response(['message' => 'Post#' . $post->id . ' was deleted!'], 200);
         } catch (Exception $e) {
@@ -168,6 +170,10 @@ Route::middleware(['auth:api'])->group(function () {
 
     Route::post('comments/add', function (Request $request) {
         try {
+            if (!Auth::user()->can('create', Comment::class)) {
+                throw new Exception('Authorization failed.');
+            }
+
             $comment = new Comment;
             $comment->text = $request->input('text');
             $comment->post_id = $request->input('post_id');
@@ -189,8 +195,13 @@ Route::middleware(['auth:api'])->group(function () {
     Route::post('comments/update', function (Request $request) {
         try {
             $comment = Comment::findOrFail($request->comment_id);
+
+            if (!Auth::user()->can('update', $comment)) {
+                throw new Exception('Authorization failed.');
+            }
+
             $comment->text = $request->text;
-            $comment->user_id = $request->user_id;
+            $comment->user_id = Auth::user()->id;
             $comment->post_id = $request->post_id;
             $comment->user_comment_id = $request->user_comment_id;
 
@@ -212,6 +223,11 @@ Route::middleware(['auth:api'])->group(function () {
     Route::post('comments/delete', function (Request $request) {
         try {
             $comment = Comment::findOrFail($request->comment_id);
+
+            if (!Auth::user()->can('delete', $comment)) {
+                throw new Exception('Authorization failed.');
+            }
+
             $comment->delete();
 
             return response('Comment#' . $comment->id . ' was deleted!', 200);
