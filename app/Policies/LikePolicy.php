@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Post;
+use App\Like;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class PostPolicy
+class LikePolicy
 {
     use HandlesAuthorization;
 
@@ -28,37 +28,25 @@ class PostPolicy
     }
 
     /**
-     * Determine if the given user can create posts.
+     * Determine if the given user can create like.
      *
      * @param  \App\User  $user
      * @return bool
      */
     public function create(User $user)
     {
-        return $user->isAdmin();
+        return true;
     }
 
     /**
-     * Determine if the given user can update posts.
+     * Determine if the given user can delete like.
      *
      * @param  \App\User  $user
-     * @param  \App\Post  $post
+     * @param  \App\Like  $like
      * @return bool
      */
-    public function update(User $user, Post $post)
+    public function delete(User $user, Like $like)
     {
-        return $user->id === $post->author_id;
-    }
-
-    /**
-     * Determine if the given user can delete posts.
-     *
-     * @param  \App\User  $user
-     * @param  \App\Post  $post
-     * @return bool
-     */
-    public function delete(User $user, Post $post)
-    {
-        return $user->id === $post->author_id;
+        return $user->id === $like->user_id;
     }
 }

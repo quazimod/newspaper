@@ -39,7 +39,7 @@ class CommentPolicy
     }
 
     /**
-     * Determine if the given user can create comments.
+     * Determine if the given user can update comments.
      *
      * @param  \App\User  $user
      * @param  \App\Comment  $comment
@@ -51,7 +51,7 @@ class CommentPolicy
     }
 
     /**
-     * Determine if the given user can create comments.
+     * Determine if the given user can delete comments.
      *
      * @param  \App\User  $user
      * @param  \App\Comment  $comment

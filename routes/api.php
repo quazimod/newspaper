@@ -240,7 +240,9 @@ Route::middleware(['auth:api'])->group(function () {
 
     Route::post('likes/add', function (Request $request) {
         try {
-            if (Auth::user()->likes->firstWhere('post_id', $request->post_id)) {
+            if (!Auth::user()->can('create', Like::class)) {
+                throw new Exception('Authorization failed.');
+            } else if (Auth::user()->likes()->firstWhere('post_id', $request->post_id)) {
                 throw new Exception('User already liked this post.');
             }
 
@@ -262,9 +264,11 @@ Route::middleware(['auth:api'])->group(function () {
 
     Route::post('likes/remove', function (Request $request) {
         try {
-            $like = Auth::user()->likes->firstWhere('post_id', $request->post_id);
+            $like = Auth::user()->likes()->firstWhere('post_id', $request->post_id);
 
-            if (!$like) {
+            if (!Auth::user()->can('delete', $like)) {
+                throw new Exception('Authorization failed.');
+            } else if (!$like) {
                 throw new Exception('User not liked this post yet.');
             }
 
