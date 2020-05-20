@@ -1,0 +1,23 @@
+.container {
+  margin-top: 10%;
+  padding-left: 15px;
+  background: bottom;
+  box-shadow: 0 0 10px 0px #dee2e6;
+}
+.container .newspaper-page .post-item {
+  padding: 25px;
+}
+.container .newspaper-page .post-item .post-item-content {
+  padding-left: 5px;
+  box-shadow: 6px 5px 0px 5px #e9ecef;
+}
+.container .newspaper-page .post-item .post-item-content .post-item-image img {
+  max-width: 100%;
+  min-height: 80%;
+}
+.container .newspaper-page .post-item .post-item-content .post-item-title {
+  text-align: left;
+}
+.container .newspaper-page .post-item .post-item-content .post-item-title:hover {
+  color: darkred;
+}

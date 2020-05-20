@@ -27,6 +27,27 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
-    el: '#app',
+//posts = [];
+
+
+
+axios.get('./api/posts')
+    .then(response => {
+        let posts = response.data.posts;
+
+        console.log(posts);
+
+        const app = new Vue({
+            el: '#app',
+            data: {
+                posts: posts,
+            }
+        });
+
+        console.log(app);
 });
+
+
+
+
+

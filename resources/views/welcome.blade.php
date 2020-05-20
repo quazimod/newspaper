@@ -5,14 +5,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Laravel</title>
+        <script src="{{ asset('js/app.js') }}" defer></script>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+{{--        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">--}}
 
         <!-- Styles -->
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
         <style>
             html, body {
-                background-color: #fff;
+                background-color: #ffffff;
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
@@ -20,9 +23,14 @@
                 margin: 0;
             }
 
-            .full-height {
-                height: 100vh;
+            img {
+                max-width: 100%;
+                max-height: 100%;
             }
+
+            /*.full-height {
+                height: 100vh;
+            }*/
 
             .flex-center {
                 align-items: center;
@@ -79,20 +87,20 @@
                 </div>
             @endif
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+            <div id="app" class="content container">
+                <div class="newspaper-page row">
+                    @verbatim
+                        <div class="post-item col-md-3" v-for="post in posts">
+                            <div class="post-item-content">
+                                <template>
+                                    <p v-if="post.image_url" class="post-item-image">
+                                        <img :src="[post.image_url]">
+                                    </p>
+                                    <p class="post-item-title">{{ post.title }}</p>
+                                </template>
+                            </div>
+                        </div>
+                    @endverbatim
                 </div>
             </div>
         </div>
