@@ -21,15 +21,15 @@
   min-height: 80%;
 }
 .container .newspaper-page .post-item .post-item-container .post-item-content .post-item-title {
-  padding-left: 5px;
+  padding: 8px 18px;
 }
 .container .newspaper-page .post-item .post-item-container .post-item-author {
-  text-align: left;
-  padding-left: 4px;
+  text-align: right;
+  padding-right: 18px;
 }
 .container .newspaper-page .post-item .post-item-container .post-item-activities {
-  padding-left: 2px;
   text-align: left;
+  padding: 12px;
 }
 .container .newspaper-page .post-item .post-item-container .post-item-activities .post-item-activity {
   width: 46px;
