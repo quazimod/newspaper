@@ -8,25 +8,58 @@
         .post-item {
             padding: 25px;
 
-            .post-item-content {
-                padding-left: 5px;
-                box-shadow: 6px 5px 0px 5px #e9ecef;
+            .post-item-container {
+                border: 1px solid #dadce0;
+                border-radius: 8px;
+                box-shadow: 4px 1px 0px 0px #e9ecef;
 
-                .post-item-image {
-
-                    img {
-                        max-width: 100%;
-                        min-height: 80%;
-                    }
-                }
-
-                .post-item-title {
+                .post-item-content {
                     text-align: left;
-                    &:hover {
-                        color: darkred;
+
+                    .post-item-image {
+
+                        img {
+                            border-radius: 8px 8px 0 0;
+                            max-width: 100%;
+                            min-height: 80%;
+                        }
+                    }
+
+                    .post-item-title {
+                        padding-left: 5px;
                     }
                 }
+
+                .post-item-author {
+                    text-align: left;
+                    padding-left: 4px;
+                }
+
+                .post-item-activities {
+                    padding-left: 2px;
+                    text-align: left;
+
+                    .post-item-activity {
+                        width: 46px;
+                        height: 26px;
+                        display: inline-block;
+                        text-indent: 32px;
+                        text-align: left;
+                    }
+
+                    .comment-activity {
+                        background: url(/public/images/post_comment.png) 0px 2px;
+                        background-repeat: no-repeat;
+                    }
+
+                    .like-activity {
+                        background: url(/public/images/post_like.png) 0px 0px;
+                        background-repeat: no-repeat;
+                    }
+                }
+
             }
+
         }
     }
 }

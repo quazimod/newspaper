@@ -89,18 +89,9 @@
 
             <div id="app" class="content container">
                 <div class="newspaper-page row">
-                    @verbatim
-                        <div class="post-item col-md-3" v-for="post in posts">
-                            <div class="post-item-content">
-                                <template>
-                                    <p v-if="post.image_url" class="post-item-image">
-                                        <img :src="[post.image_url]">
-                                    </p>
-                                    <p class="post-item-title">{{ post.title }}</p>
-                                </template>
-                            </div>
-                        </div>
-                    @endverbatim
+                    <post-item v-for="post in posts"
+                        v-bind:key="post.id"
+                        v-bind:post="post"></post-item>
                 </div>
             </div>
         </div>

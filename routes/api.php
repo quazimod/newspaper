@@ -25,7 +25,7 @@ Route::get('posts', function (Request $request) {
     try {
         if (!$request->post_id) {
              return response(['posts' =>
-                Post::with(['comments', 'likes'])->get()], 200);
+                Post::with(['comments', 'likes', 'author'])->get()], 200);
         } else {
             return response(['post' =>
                 Post::with(['comments', 'likes'])->findOrFail($request->post_id)], 200);
