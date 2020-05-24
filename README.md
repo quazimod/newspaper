@@ -13,5 +13,5 @@ Latest news in the world!
 
 ## Usage
 
-Run Laravel artisan console command : 
+Run Laravel artisan console command within application to update news database : 
 <code>php artisan news:update</code>
