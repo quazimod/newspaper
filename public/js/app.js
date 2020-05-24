@@ -37578,7 +37578,9 @@ var render = function() {
             _vm._v(_vm._s(_vm.post.title))
           ]),
           _vm._v(" "),
-          _c("a", { attrs: { href: _vm.post.id } }, [_vm._v("Read more...")])
+          _c("a", { attrs: { href: "/public/post/" + _vm.post.id } }, [
+            _vm._v("Read more...")
+          ])
         ]
       ),
       _vm._v(" "),

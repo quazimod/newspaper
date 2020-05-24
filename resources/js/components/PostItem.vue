@@ -6,7 +6,7 @@
             </strong>
             <div class="mb-1 text-muted">{{ post.created_at }}</div>
             <p class="card-text">{{ post.title }}</p>
-            <a :href="post.id">Read more...</a>
+            <a :href="'/public/post/' + post.id">Read more...</a>
         </div>
         <div class="p-3">
             <img class="card-img-right w-100" :src="post.image_url">
