@@ -32,17 +32,12 @@ Vue.component('example-component',
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-axios.get('./api/posts')
-    .then(response => {
-        let posts =  response.data.posts;
-
-        const app = new Vue({
-            el: '#app',
-            data: {
-                posts: posts,
-            }
-        });
+const app = new Vue({
+    el: '#app',
+    data : {
+        posts:[],
+        author:{}
+    }
 });
 
-
-
+export default app;

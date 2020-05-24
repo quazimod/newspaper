@@ -1,5 +1,6 @@
 <?php
 
+use App\Author;
 use App\Comment;
 use App\Like;
 use App\Post;
@@ -27,8 +28,24 @@ Route::get('posts', function (Request $request) {
              return response(['posts' =>
                 Post::with(['comments', 'likes', 'author'])->get()], 200);
         } else {
-            return response(['post' =>
-                Post::with(['comments', 'likes'])->findOrFail($request->post_id)], 200);
+            return response(['posts' =>
+                Post::with(['comments', 'likes', 'author'])->findOrFail($request->post_id)], 200);
+        }
+    } catch (Exception $e) {
+        return response(
+            ['error' => 'Failed to load posts: ' . $e->getMessage()], 418
+        );
+    }
+});
+
+Route::get('author', function (Request $request) {
+    try {
+        if (!$request->author_id) {
+             return response(['authors' =>
+                Author::with(['posts'])->get()], 200);
+        } else {
+            return response(['authors' =>
+                Author::with(['posts'])->findOrFail($request->author_id)], 200);
         }
     } catch (Exception $e) {
         return response(

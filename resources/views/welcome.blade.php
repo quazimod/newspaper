@@ -1,19 +1,17 @@
 @extends('layouts.app')
 
 @section('scripts')
-    <script src="{{ asset('js/app.js') }}" defer></script>
-@endsection
-
-@section('styles')
-    <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
+    <script src="{{ asset('js/welcome.js') }}" defer></script>
 @endsection
 
 @section('content')
     <div id="app" class="content container newspaper-container">
-        <div class="newspaper-page row">
+        <div class="post-items-container row justify-content-between">
             <post-item v-for="post in posts"
-                       v-bind:key="post.id"
-                       v-bind:post="post"></post-item>
+                :key="post.id"
+                :post="post"
+                :author="post.author">
+            </post-item>
         </div>
     </div>
 @endsection
