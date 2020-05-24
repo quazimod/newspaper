@@ -1,48 +1,51 @@
-.container {
-  margin-top: 10%;
+.newspaper-container {
+  margin-top: 2%;
   padding-left: 15px;
   background: bottom;
   box-shadow: 0 0 10px 0px #dee2e6;
 }
-.container .newspaper-page .post-item {
+.newspaper-container .newspaper-page .post-item {
   padding: 25px;
 }
-.container .newspaper-page .post-item .post-item-container {
+.newspaper-container .newspaper-page .post-item .post-item-container {
   border: 1px solid #dadce0;
   border-radius: 8px;
   box-shadow: 4px 1px 0px 0px #e9ecef;
 }
-.container .newspaper-page .post-item .post-item-container .post-item-content {
+.newspaper-container .newspaper-page .post-item .post-item-container .post-item-content {
   text-align: left;
 }
-.container .newspaper-page .post-item .post-item-container .post-item-content .post-item-image img {
+.newspaper-container .newspaper-page .post-item .post-item-container .post-item-content a {
+  color: black;
+}
+.newspaper-container .newspaper-page .post-item .post-item-container .post-item-content .post-item-image img {
   border-radius: 8px 8px 0 0;
   max-width: 100%;
   min-height: 80%;
 }
-.container .newspaper-page .post-item .post-item-container .post-item-content .post-item-title {
+.newspaper-container .newspaper-page .post-item .post-item-container .post-item-content .post-item-title {
   padding: 8px 18px;
 }
-.container .newspaper-page .post-item .post-item-container .post-item-author {
+.newspaper-container .newspaper-page .post-item .post-item-container .post-item-author {
   text-align: right;
   padding-right: 18px;
 }
-.container .newspaper-page .post-item .post-item-container .post-item-activities {
+.newspaper-container .newspaper-page .post-item .post-item-container .post-item-activities {
   text-align: left;
   padding: 12px;
 }
-.container .newspaper-page .post-item .post-item-container .post-item-activities .post-item-activity {
+.newspaper-container .newspaper-page .post-item .post-item-container .post-item-activities .post-item-activity {
   width: 46px;
   height: 26px;
   display: inline-block;
   text-indent: 32px;
   text-align: left;
 }
-.container .newspaper-page .post-item .post-item-container .post-item-activities .comment-activity {
+.newspaper-container .newspaper-page .post-item .post-item-container .post-item-activities .comment-activity {
   background: url(/public/images/post_comment.png) 0px 2px;
   background-repeat: no-repeat;
 }
-.container .newspaper-page .post-item .post-item-container .post-item-activities .like-activity {
+.newspaper-container .newspaper-page .post-item .post-item-container .post-item-activities .like-activity {
   background: url(/public/images/post_like.png) 0px 0px;
   background-repeat: no-repeat;
 }
