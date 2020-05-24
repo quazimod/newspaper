@@ -9,7 +9,7 @@
 
 ## About Newspaper
 
-Latest news in the wordld!
+Latest news in the word!
 
 ## Usage
 
