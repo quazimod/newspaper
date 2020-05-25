@@ -16,6 +16,15 @@ class Post extends Model
     ];
 
     /**
+    * The attributes that should be cast.
+    *
+    * @var array
+    */
+    protected $casts = [
+        'created_at' => 'datetime:Y-m-d H:i',
+    ];
+
+    /**
      * Get the author of the post.
      */
     public function author()
