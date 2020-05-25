@@ -32,6 +32,7 @@
                     </div>
                 </div>
             </div>
+            <input hidden value="{{$post->id}}" ref="post_id">
             <input hidden value="{{$post->author->id}}" ref="post_author_id">
         </div>
         <div class="author-posts-container d-inline-flex flex-column">

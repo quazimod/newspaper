@@ -49995,9 +49995,16 @@ __webpack_require__.r(__webpack_exports__);
 
 var app = __webpack_require__(/*! ./app */ "./resources/js/app.js")["default"];
 
+var post_id = app.$refs['post_id'].value;
 var author_id = app.$refs['post_author_id'].value;
 axios.get('/public/api/author?author_id=' + author_id).then(function (response) {
   var author = response.data.authors;
+
+  _.remove(author.posts, function (post) {
+    console.log(post_id, post.id, post.id == post_id);
+    return post.id == post_id;
+  });
+
   app.posts = author.posts;
   app.author = author;
 });
