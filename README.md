@@ -9,7 +9,7 @@
 
 ## About Newspaper
 
-Latest news in the world!
+Breaking news in the world!
 
 ## Usage
 
